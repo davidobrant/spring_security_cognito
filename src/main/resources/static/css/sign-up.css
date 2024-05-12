@@ -1,0 +1,51 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  background: #00000080;
+}
+
+.sign-up-form {
+    margin-top: 4rem;
+  z-index: 10;
+  padding: 1rem 2rem;
+  background: var(--fg);
+  text-align: center;
+  border-radius: 0.2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.sign-up-form h2 {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.2rem;
+}
+
+.sign-up-form fieldset {
+  outline: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 0.4rem;
+}
+
+.sign-up-form fieldset > input {
+  padding: 0.2rem;
+}
+
+.sign-up-form fieldset > label {
+  font-size: 0.8rem;
+}
+
+.sign-up-form input[type="submit"] {
+  margin: .7rem 0;
+  padding: 0.2rem 0.4rem;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid;
+}
+
+.sign-up-form input[type="submit"]:hover {
+  background: var(--bg-active);
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <nav th:replace="~{components/navbar :: navbar(activePage=${activePage})}"></nav>
+    <main>
+        <div th:if="${post != null}" class="edit-post-container">
+            <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${post}" method="post">
+                <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                <div>
+                    <label for="title">Title:</label><br>
+                    <input type="text" id="title" name="title" th:field="*{title}" required><br>
+                </div>
+                <div>
+                    <label for="content">Content:</label><br>
+                    <textarea id="content" name="content" rows="4" cols="50" th:field="*{content}" required></textarea><br>
+                </div>
+                <div>
+                    <input type="submit" value="Save">
+                </div>
+            </form>
+        </div>
+    </main>
+    <div class="backdrop"></div>
+    <script>
+        const backdrop = document.querySelector(".backdrop");
+        backdrop.onclick = () => window.location.replace("/wall");
+    </script>
+</body>
+</html>

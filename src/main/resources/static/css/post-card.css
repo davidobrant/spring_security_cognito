@@ -1,0 +1,75 @@
+.post-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: .4rem;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    padding: .7rem;
+    background: var(--fg);
+    gap: .5rem;
+    position: relative;
+}
+
+.post-card .title {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: .2rem;
+}
+
+.post-card .content {
+    background: var(--bg);
+    padding: .5rem;
+    border-radius: .3rem;
+}
+
+.post-card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+}
+
+.post-card-actions > form {
+    display: flex;
+    align-items: center;
+}
+
+.post-card-actions .delete-post-btn,
+.post-card-actions .edit-post-btn {
+    padding: 0.1rem 0.7rem;
+  border-radius: 1rem;
+  outline: none;
+  border: 1px solid var(--btn-border);
+  cursor: pointer;
+  font-size: .7rem;
+}
+
+.post-card-actions .delete-post-btn {
+    background: var(--danger);
+}
+
+.post-card-actions .edit-post-btn {
+    background: var(--info);
+}
+
+.post-card-actions .edit-post-btn.editing {
+    background: initial;
+}
+
+.post-card .modified {
+    font-size: .7rem;
+}
+
+.post-card .by-username {
+    position: absolute;
+    bottom: .7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .9rem;
+    color: var(--link);
+}

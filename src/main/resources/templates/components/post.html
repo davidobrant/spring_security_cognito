@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+    <div th:fragment="post-card(post)" class="post-card">
+        <div class="contents">
+            <h5 th:text="${post.title}" class="title"></h5>
+            <p th:text="${post.content}" class="content"></p>
+        </div>
+        <div class="post-card-footer">
+            <div class="post-card-info">
+                <span th:text="${post.user.username}" class="by-username"></span>
+                <span th:text="${post.updatedAtString}" class="modified"></span>
+            </div>
+        </div>
+    </div>
+    <div th:fragment="post-card-auth(post)" class="post-card post-card-auth" th:id="'post-card-' + ${post.id}">
+        <div class="contents">
+            <h5 th:text="${post.title}" class="title"></h5>
+            <p th:text="${post.content}" class="content"></p>
+        </div>
+        <div class="edit-form-container hidden">
+            <form th:replace="~{components/forms :: edit-post-form(post=${post})}"></form>
+        </div>
+        <div class="post-card-footer">
+            <div class="post-card-info">
+                <span th:text="${post.user.username}" class="by-username"></span>
+                <span th:text="${post.updatedAtString}" class="modified"></span>
+            </div>
+            <div class="post-card-actions">
+                <input type="button" th:onclick="enableEdit(event, [[${post.id}]])" class="edit-post-btn " value="Edit" />
+                <form th:action="@{'/posts/' + ${post.id} + '/delete'}" class="delete-post-form" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="submit" value="Delete" class="delete-post-btn">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

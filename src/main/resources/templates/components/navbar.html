@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<body>
+    <nav th:fragment="navbar(activePage)">
+        <div class="nav-logo"><a href="/" style="font-size: 1.2rem;">&#x1f47d;</a></div>
+        <ul sec:authorize="isAuthenticated()" class="nav-links">
+            <li class="nav-link" th:classappend="${activePage == 'home'} ? 'active'">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-link" th:classappend="${activePage == 'wall'} ? 'active'">
+                <a href="/wall">Wall</a>
+            </li>
+            <li class="nav-link" th:classappend="${activePage == 'posts'} ? 'active'">
+                <a href="/posts">Posts</a>
+            </li>
+            <li class="nav-link" th:classappend="${activePage == 'account'} ? 'active'">
+                <a href="/account">Account</a>
+            </li>
+        </ul>
+        <div class="nav-auth">
+            <div sec:authorize="isAuthenticated()">
+                <p th:text="${username}"></p>
+                <form action="/logout" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button class="btn auth-btn" type="submit">Logout</button>
+                </form>
+            </div>
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/oauth2/authorization/cognito}" class="btn auth-btn">Login</a>
+                <a th:href="@{/sign-up}" class="btn auth-btn sign-up-btn">Sign up</a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

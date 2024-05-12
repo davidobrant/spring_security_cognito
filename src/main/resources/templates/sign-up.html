@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" th:href="@{./styles.css}" />
+    <script th:src="@{./main.js}" defer></script>
+  </head>
+  <body>
+    <nav
+      th:replace="~{components/navbar :: navbar(activePage=${activePage})}"
+    ></nav>
+    <main class="sign-up">
+        <form
+        class="sign-up-form"
+        th:action="@{/sign-up}"
+        th:object="${signUp}"
+        method="post"
+        >
+        <h2>Sign Up</h2>
+        <input
+          type="hidden"
+          th:name="${_csrf.parameterName}"
+          th:value="${_csrf.token}"
+        />
+        <fieldset>
+          <label for="username">Username: </label>
+          <input type="text" th:field="*{username}" id="username" placeholder="nick" autofocus required autocomplete="off"/>
+        </fieldset>
+        <fieldset>
+          <label for="email">Email: </label>
+          <input type="email" th:field="*{email}" id="email" placeholder="me@example.com" required autocomplete="off"/>
+        </fieldset>
+        <fieldset>
+          <label for="password">Password: </label>
+          <input type="password" th:field="*{password}" id="password" placeholder="********" required/>
+        </fieldset>
+        <input type="submit" value="Register" />
+      </form>
+    </main>
+    <div class="backdrop"></div>
+    <script>
+        const backdrop = document.querySelector(".backdrop");
+        backdrop.onclick = () => window.location.replace("/");
+    </script>
+  </body>
+</html>

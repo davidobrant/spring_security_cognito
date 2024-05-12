@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{./styles.css}">
+</head>
+<body>
+    <nav th:replace="~{components/navbar :: navbar(activePage=${activePage})}"></nav>
+    <main>
+        <div sec:authorize="isAuthenticated()" class="welcome">
+            <h1>Welcome, <span th:text="${#authentication.name}"></span>!</h1>
+            <p>Please visit <a class="welcome-link" href="/wall">Wall</a> for public posts!</p>
+            <p>You find your own posts under <a class="welcome-link" href="/posts">Posts</a>!</p>
+        </div>
+        <div sec:authorize="isAnonymous()" class="welcome anonymous">
+            <h1>Welcome to the App</h1>
+            <p>Not much to do without access... <span>&#128540;</span></p>
+            <div class="btn-container">
+                <a th:href="@{/oauth2/authorization/cognito}" class="btn auth-btn welcome-login-btn">Login</a>
+                <p>or</p>
+                <a th:href="@{/sign-up}" class="btn auth-btn welcome-sign-up-btn">Sign up</a>
+            </div>
+        </div>
+    </main>
+    <footer>Footer</footer>
+</body>
+</html>

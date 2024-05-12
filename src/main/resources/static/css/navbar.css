@@ -1,0 +1,58 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 .4rem;
+  background: var(--bg-nav);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.7rem;
+  list-style: none;
+}
+
+.nav-link * {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-link.active a {
+  color: var(--text-active);
+}
+
+.nav-link:hover a {
+  text-decoration: underline;
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+}
+
+.nav-auth > div {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+
+.auth-btn {
+  padding: .3rem .6rem;
+  background: var(--btn-clr);
+  font-size: .8rem;
+  line-height: 1rem;
+}
+
+.auth-btn:hover {
+  background: var(--btn-hover);
+}
+
+.sign-up-btn {
+    background: var(--accent);
+}
+
+.sign-up-btn:hover {
+
+}

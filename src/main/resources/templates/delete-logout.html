@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<script th:inline="javascript">
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/logout");
+    document.body.appendChild(form);
+
+    var csrfInput = document.createElement("input");
+    csrfInput.setAttribute("type", "hidden");
+    csrfInput.setAttribute("name", "_csrf");
+    csrfInput.setAttribute("value", /*[[${_csrf.token}]]*/);
+    form.appendChild(csrfInput);
+
+    form.submit();
+</script>
+</body>
+</html>

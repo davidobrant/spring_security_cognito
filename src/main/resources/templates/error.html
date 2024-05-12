@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Something went wrong</title>
+    <link rel="stylesheet" th:href="@{./styles.css}">
+</head>
+<body>
+    <nav th:replace="~{components/navbar :: navbar(activePage=${activePage})}"></nav>
+    <main>
+        <h1>Ooops...</h1>
+        <p>Something went wrong. <a href="/" class="error-link">Go back to <span>Home</span></a></p>
+    </main>
+</body>
+</html>

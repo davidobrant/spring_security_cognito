@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wall</title>
+    <link rel="stylesheet" th:href="@{./styles.css}">
+    <script th:src="@{./js/wall.js}" defer></script>
+</head>
+<body>
+    <nav th:replace="~{components/navbar :: navbar(activePage=${activePage})}"></nav>
+    <main>
+        <h1>The Wall</h1>
+        <section class="new-post-section">
+            <button class="btn toggle-new-post-btn" th:onclick="toggleNewPostForm()" ><span>+</span> New Post</button>
+            <div class="new-post-form-container hidden">
+                <form th:replace="~{components/forms :: new-post-form}"></form>
+            </div>
+        </section>
+        <section class="wall-posts">
+            <div th:each="post : ${posts}">
+                <div th:if="${post.user.username == username}" th:insert="~{components/post :: post-card-auth(post=${post})}"></div>
+                <div th:unless="${post.user.username == username}" th:insert="~{components/post :: post-card(post=${post})}"></div>
+            </div>
+            <div th:if="${posts.empty}" class="no-posts-container">
+                <p>No posts to display...</p>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

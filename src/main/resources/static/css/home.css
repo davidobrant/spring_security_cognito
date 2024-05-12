@@ -1,0 +1,53 @@
+.welcome {
+    padding-top: 4rem;
+    text-align: center;
+}
+
+.welcome > h1 {
+    margin-bottom: 1rem;
+}
+
+.welcome .btn-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.welcome .btn-container .auth-btn {
+    flex-grow: 1;
+    text-align: center;
+    padding: 2rem 3rem;
+    font-size: 1.2rem;
+    transition: all 200ms ease-in-out;
+}
+
+.welcome .btn-container .auth-btn:hover {
+    transform: scale(1.02);
+}
+
+.welcome-login-btn {
+    background: hsla(var(--accent-1), .2);
+    box-shadow: var(--shadow-accent) hsla(var(--accent-1), .1);
+}
+
+.welcome-login-btn:hover {
+    background: hsla(var(--accent-1), .3);
+    box-shadow: var(--shadow-accent) hsla(var(--accent-1), .2);
+}
+
+.welcome-sign-up-btn {
+    background: hsla(var(--accent-2), .2);
+    box-shadow: var(--shadow-accent) hsla(var(--accent-2), .1);
+}
+
+.welcome-sign-up-btn:hover {
+    background: hsla(var(--accent-2), .3);
+    box-shadow: var(--shadow-accent) hsla(var(--accent-2), .2);
+}
+
+.welcome-link {
+    font-weight: 700;
+    color: var(--info);
+}
+

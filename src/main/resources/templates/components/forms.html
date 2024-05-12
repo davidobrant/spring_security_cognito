@@ -1,0 +1,22 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <form th:fragment="new-post-form" th:action="@{/posts/new}" th:object="${newPost}" method="post" class="new-post-form post-form">
+        <h5>New Post</h5>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="text" th:field="*{title}" placeholder="title" autocomplete="off" autofocus required />
+        <textarea th:field="*{content}" cols="42" rows="6" placeholder="content" required></textarea>
+<!--        <input type="file" th:field="*{imageUrl}" />-->
+        <input type="submit" value="Create" class="btn post-btn"/>
+    </form>
+    <div th:fragment="edit-post-form(post)" >
+        <form th:action="@{'/posts/' + ${post.id} + '/edit'}" method="post" class="edit-post-form post-form">
+            <input type="hidden" name="id" th:value="${post.id}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="text" th:name="title" th:value="${post.title}" class="input-title" autofocus required />
+            <textarea th:name="content" th:text="${post.content}" class="input-content" required></textarea>
+            <input type="submit" value="Save" class="save-btn btn"/>
+        </form>
+    </div>
+</body>
+</html>
